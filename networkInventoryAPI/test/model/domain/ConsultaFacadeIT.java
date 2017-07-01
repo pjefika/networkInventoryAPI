@@ -3,9 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package dao;
+package model.domain;
 
-import model.entity.NetworkInventory;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -17,9 +16,9 @@ import static org.junit.Assert.*;
  *
  * @author G0042204
  */
-public class NetworkInventoryDAOTest {
+public class ConsultaFacadeIT {
 
-    public NetworkInventoryDAOTest() {
+    public ConsultaFacadeIT() {
     }
 
     @BeforeClass
@@ -39,19 +38,16 @@ public class NetworkInventoryDAOTest {
     }
 
     /**
-     * Test of consultarCliente method, of class NetworkInventoryDAO.
+     * Test of consultar method, of class ConsultaFacade.
      */
     @Test
-    public void testConsultarCliente() throws Exception {
-
-        try {
-            String param1 = "6239812027";
-            EfikaCustomerInterface instance = new NetworkInventoryDAO();
-            NetworkInventory result = instance.consultarCliente(param1);
-            assertFalse(result.getInstancia().isEmpty());
-        } catch (Exception e) {
-            fail(e.getMessage());
-        }
+    public void testConsultar() throws Exception {
+        String instancia = "4130222839";
+        ConsultaFacade instance = new ConsultaFacade();
+        EfikaCustomerDTO result = instance.consultar(instancia);
+        System.out.println("end");
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
     }
 
 }

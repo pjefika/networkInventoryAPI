@@ -3,14 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package dao;
+package model.domain;
 
 /**
  *
  * @author G0042204
  */
-public interface EfikaCustomerInterface <T>{
-
-    public T consultarCliente(String param1) throws Exception;
-
+public class FactoryService {
+    
+    public static CustomerServiceInter create(){
+        return new ConsultaFacade();
+    }
+    
 }

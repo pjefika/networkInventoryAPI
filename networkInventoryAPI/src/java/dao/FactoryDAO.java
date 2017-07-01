@@ -5,14 +5,21 @@
  */
 package dao;
 
+import model.entity.NetworkInventoryGpon;
+import model.entity.NetworkInventoryMetalico;
+
 /**
  *
  * @author G0042204
  */
 public class FactoryDAO {
 
-    public static EfikaCustomerInterface create() {
-        return new NetworkInventoryDAO();
+    public static EfikaCustomerInterface<NetworkInventoryGpon> createGpon() {
+        return new NetworkInventoryGponDAO();
+    }
+
+    public static EfikaCustomerInterface<NetworkInventoryMetalico> createMetalico() {
+        return new NetworkInventoryMetalicoDAO();
     }
 
 }

@@ -8,7 +8,8 @@ package model.domain;
 import br.net.gvt.efika.customer.EfikaCustomer;
 import br.net.gvt.efika.customer.InventarioRede;
 import javax.xml.bind.annotation.XmlRootElement;
-import model.entity.NetworkInventory;
+import model.entity.NetworkInventoryGpon;
+import model.entity.NetworkInventoryMetalico;
 
 /**
  *
@@ -16,13 +17,13 @@ import model.entity.NetworkInventory;
  */
 @XmlRootElement(name = "cliente")
 public class EfikaCustomerDTO extends EfikaCustomer {
-    
-    public EfikaCustomerDTO(NetworkInventory n) {
-        
+
+    public EfikaCustomerDTO(NetworkInventoryGpon n) {
+
         this.setInstancia(n.getInstancia());
         this.setDesignador(n.getDesignador());
         this.setDesignadorAcesso(n.getDesignadorAcesso());
-        
+
         InventarioRede r = new InventarioRede();
         r.setIpDslam(n.getIpDslam());
         r.setVendorDslam(n.getVendorDslam());
@@ -36,8 +37,32 @@ public class EfikaCustomerDTO extends EfikaCustomer {
         r.setVlanVod(n.getVlanVod());
         r.setVlanMulticast(n.getVlanMulticast());
         r.setCvLan(n.getCvLan());
-        
+
         this.setRede(r);
     }
-    
+
+    public EfikaCustomerDTO(NetworkInventoryMetalico n) {
+
+        this.setInstancia(n.getInstancia());
+        this.setDesignador(n.getDesignador());
+
+        InventarioRede r = new InventarioRede();
+        r.setIpDslam(n.getIpDslam());
+        r.setVendorDslam(n.getVendorDslam());
+        r.setModeloDslam(n.getModeloDslam());
+        r.setSlot(n.getSlot());
+        r.setPorta(n.getPorta());
+        r.setSequencial(n.getSequencial());
+        r.setRin(n.getRin());
+        r.setVlanVoip(n.getVlanVoip());
+        r.setVlanVod(n.getVlanVod());
+        r.setVlanMulticast(n.getVlanMulticast());
+
+        if (n.getSequencial() != null) {
+            r.setCvLan(n.getSequencial() + 100);
+        }
+
+        this.setRede(r);
+    }
+
 }

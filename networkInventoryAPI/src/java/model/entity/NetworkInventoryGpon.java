@@ -17,7 +17,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "SA005_INVENTARIO_REDE_GPON", schema = "dw_efika")
-public class NetworkInventory implements Serializable {
+public class NetworkInventoryGpon implements Serializable {
 
     @Id
     @Column(name = "INSTANCIA")
@@ -66,7 +66,7 @@ public class NetworkInventory implements Serializable {
     @Column(name = "CVLAN")
     private Integer cvLan;
 
-    public NetworkInventory() {
+    public NetworkInventoryGpon() {
     }
 
     public String getInstancia() {
