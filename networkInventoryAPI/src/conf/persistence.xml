@@ -4,6 +4,7 @@
     <provider>org.hibernate.ejb.HibernatePersistence</provider>
     <jta-data-source>java:/MySqlDS</jta-data-source>
     <class>model.entity.NetworkInventoryGpon</class>
+    <class>model.entity.NetworkInventoryMetalico</class>
     <exclude-unlisted-classes>true</exclude-unlisted-classes>
   </persistence-unit>
 </persistence>
