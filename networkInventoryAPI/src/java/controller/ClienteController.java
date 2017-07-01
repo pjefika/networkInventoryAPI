@@ -13,6 +13,7 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import model.domain.EfikaCustomerDTO;
 
 /**
  *
@@ -20,19 +21,19 @@ import javax.ws.rs.core.Response;
  */
 @Path("/networkInventory")
 public class ClienteController implements EfikaCustomerRestInter {
-
+    
     private EfikaCustomerInterface dao = FactoryDAO.create();
-
+    
     @GET
     @Path("/{instancia}")
     @Produces(MediaType.APPLICATION_JSON)
     @Override
     public Response getCliente(@PathParam("instancia") String instancia) {
         try {
-            return Response.status(200).entity(dao.consultarCliente(instancia)).build();
+            return Response.status(200).entity(new EfikaCustomerDTO(dao.consultarCliente(instancia))).build();
         } catch (Exception e) {
             return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity(e).build();
         }
     }
-
+    
 }

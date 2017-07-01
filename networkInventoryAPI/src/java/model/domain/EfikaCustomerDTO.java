@@ -16,13 +16,13 @@ import model.entity.NetworkInventory;
  */
 @XmlRootElement(name = "cliente")
 public class EfikaCustomerDTO extends EfikaCustomer {
-
+    
     public EfikaCustomerDTO(NetworkInventory n) {
-
+        
         this.setInstancia(n.getInstancia());
         this.setDesignador(n.getDesignador());
         this.setDesignadorAcesso(n.getDesignadorAcesso());
-
+        
         InventarioRede r = new InventarioRede();
         r.setIpDslam(n.getIpDslam());
         r.setVendorDslam(n.getVendorDslam());
@@ -35,7 +35,9 @@ public class EfikaCustomerDTO extends EfikaCustomer {
         r.setVlanVoip(n.getVlanVoip());
         r.setVlanVod(n.getVlanVod());
         r.setVlanMulticast(n.getVlanMulticast());
+        r.setCvLan(n.getCvLan());
+        
         this.setRede(r);
     }
-
+    
 }

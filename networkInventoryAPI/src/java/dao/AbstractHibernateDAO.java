@@ -15,4 +15,10 @@ public class AbstractHibernateDAO {
 
     protected static EntityManager em;
 
+    public void close() {
+        if (em.isOpen()) {
+            em.close();
+        }
+    }
+
 }

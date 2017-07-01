@@ -7,12 +7,11 @@ package dao;
 
 import model.entity.NetworkInventory;
 
-
 /**
  *
  * @author G0042204
  */
-public interface EfikaCustomerInterface {
+public interface EfikaCustomerInterface extends InterfaceDAO<NetworkInventory> {
 
     public NetworkInventory consultarCliente(String param1) throws Exception;
 

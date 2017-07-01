@@ -15,10 +15,13 @@ import model.entity.NetworkInventory;
 public class NetworkInventoryDAO extends AbstractHibernateDAO implements
         EfikaCustomerInterface {
 
+    public NetworkInventoryDAO() {
+        em = FactoryEntityManager.getInstance();
+    }
+
     @Override
     public NetworkInventory consultarCliente(String param1) throws Exception {
         try {
-            em = FactoryEntityManager.getInstance();
             Query query = em.createQuery("FROM NetworkInventory i "
                     + "WHERE "
                     + "("

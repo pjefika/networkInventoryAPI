@@ -15,7 +15,7 @@ import javax.persistence.Persistence;
  */
 public class FactoryEntityManager {
 
-    static EntityManagerFactory emf = Persistence.createEntityManagerFactory("networkOfflinePU");
+    static EntityManagerFactory emf = Persistence.createEntityManagerFactory("networkInventoryPU");
 //    static EntityManagerFactory emf = Persistence.createEntityManagerFactory("localPU");
 
     public static EntityManager getInstance() {

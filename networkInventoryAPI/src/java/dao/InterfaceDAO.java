@@ -9,6 +9,10 @@ package dao;
  *
  * @author G0042204
  */
-public interface InterfaceDAO <T>{
-    public void cadastrar(T t) throws Exception;
+public interface InterfaceDAO<T> {
+
+//    public void cadastrar(T t) throws Exception;
+
+    public void close();
+
 }
