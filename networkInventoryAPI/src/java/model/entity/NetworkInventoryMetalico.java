@@ -12,12 +12,13 @@ import javax.persistence.Id;
 import javax.persistence.NamedStoredProcedureQuery;
 import javax.persistence.ParameterMode;
 import javax.persistence.StoredProcedureParameter;
+import javax.persistence.Table;
 
 /**
  *
  * @author G0042204
  */
-@Entity
+@Table(schema = "dw_efika")
 @NamedStoredProcedureQuery(
         name = "GET_INVENTARIO_METALICO",
         procedureName = "GET_INVENTARIO_METALICO",
@@ -26,6 +27,7 @@ import javax.persistence.StoredProcedureParameter;
             @StoredProcedureParameter(name = "instancia", type = String.class, mode = ParameterMode.IN)
         }
 )
+@Entity
 public class NetworkInventoryMetalico implements Serializable {
 
     @Id
