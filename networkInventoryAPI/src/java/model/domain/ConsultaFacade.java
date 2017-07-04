@@ -30,18 +30,19 @@ public class ConsultaFacade implements CustomerServiceInter {
         try {
             gpon = FactoryDAO.createGpon();
             NetworkInventoryGpon g = gpon.consultarCliente(instancia);
-            gpon.close();
             return new EfikaCustomerDTO(g);
         } catch (Exception e) {
             try {
                 metalico = FactoryDAO.createMetalico();
                 NetworkInventoryMetalico met = metalico.consultarCliente(instancia);
-                metalico.close();
                 return new EfikaCustomerDTO(met);
             } catch (Exception ex) {
                 throw new CustomerNotFound();
+            }finally{
+                metalico.close();
             }
         } finally {
+            gpon.close();
             FactoryEntityManager.getInstance().close();
         }
     }
