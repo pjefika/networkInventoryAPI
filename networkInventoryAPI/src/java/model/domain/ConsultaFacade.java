@@ -7,6 +7,7 @@ package model.domain;
 
 import dao.EfikaCustomerInterface;
 import dao.FactoryDAO;
+import dao.FactoryEntityManager;
 import model.domain.exception.CustomerNotFound;
 import model.entity.NetworkInventoryGpon;
 import model.entity.NetworkInventoryMetalico;
@@ -22,21 +23,26 @@ public class ConsultaFacade implements CustomerServiceInter {
     private EfikaCustomerInterface<NetworkInventoryMetalico> metalico;
 
     public ConsultaFacade() {
-        gpon = FactoryDAO.createGpon();
     }
 
     @Override
     public EfikaCustomerDTO consultar(String instancia) throws Exception {
         try {
-            return new EfikaCustomerDTO(gpon.consultarCliente(instancia));
+            gpon = FactoryDAO.createGpon();
+            NetworkInventoryGpon g = gpon.consultarCliente(instancia);
+            gpon.close();
+            return new EfikaCustomerDTO(g);
         } catch (Exception e) {
             try {
                 metalico = FactoryDAO.createMetalico();
-                return new EfikaCustomerDTO(metalico.consultarCliente(instancia));
+                NetworkInventoryMetalico met = metalico.consultarCliente(instancia);
+                metalico.close();
+                return new EfikaCustomerDTO(met);
             } catch (Exception ex) {
-                ex.printStackTrace();
                 throw new CustomerNotFound();
             }
+        } finally {
+            FactoryEntityManager.getInstance().close();
         }
     }
 

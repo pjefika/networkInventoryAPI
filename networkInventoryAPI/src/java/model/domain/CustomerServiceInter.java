@@ -10,7 +10,7 @@ package model.domain;
  * @author G0042204
  */
 public interface CustomerServiceInter {
-    
+
     public EfikaCustomerDTO consultar(String instancia) throws Exception;
-    
+
 }

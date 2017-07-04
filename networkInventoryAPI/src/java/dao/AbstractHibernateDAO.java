@@ -13,11 +13,13 @@ import javax.persistence.EntityManager;
  */
 public class AbstractHibernateDAO {
 
-    protected static EntityManager em;
+    protected EntityManager em;
 
     public void close() {
-        if (em.isOpen()) {
+        try {
             em.close();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 

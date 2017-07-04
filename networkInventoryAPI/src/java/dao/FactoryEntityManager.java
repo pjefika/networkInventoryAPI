@@ -5,7 +5,6 @@
  */
 package dao;
 
-import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
@@ -15,10 +14,13 @@ import javax.persistence.Persistence;
  */
 public class FactoryEntityManager {
 
-    static EntityManagerFactory emf = Persistence.createEntityManagerFactory("networkInventoryPU");
-//    static EntityManagerFactory emf = Persistence.createEntityManagerFactory("localPU");
+    static EntityManagerFactory emf;
 
-    public static EntityManager getInstance() {
-        return emf.createEntityManager();
+    public static EntityManagerFactory getInstance() {
+        if (emf == null || !emf.isOpen()) {
+            emf = Persistence.createEntityManagerFactory("networkInventoryPU");
+        }
+        return emf;
     }
+
 }

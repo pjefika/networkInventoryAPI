@@ -5,7 +5,6 @@
  */
 package dao;
 
-import static dao.AbstractHibernateDAO.em;
 import javax.persistence.Query;
 import model.entity.NetworkInventoryGpon;
 
@@ -14,11 +13,10 @@ import model.entity.NetworkInventoryGpon;
  * @author G0042204
  */
 public class NetworkInventoryGponDAO extends AbstractHibernateDAO implements
-        EfikaCustomerInterface<NetworkInventoryGpon>,
-        InterfaceDAO<NetworkInventoryGpon> {
+        EfikaCustomerInterface<NetworkInventoryGpon> {
 
     public NetworkInventoryGponDAO() {
-        em = FactoryEntityManager.getInstance();
+        em = FactoryEntityManager.getInstance().createEntityManager();
     }
 
     @Override

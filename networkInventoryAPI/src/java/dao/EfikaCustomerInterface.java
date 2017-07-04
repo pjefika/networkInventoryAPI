@@ -9,7 +9,7 @@ package dao;
  *
  * @author G0042204
  */
-public interface EfikaCustomerInterface <T>{
+public interface EfikaCustomerInterface <T> extends InterfaceDAO<T>{
 
     public T consultarCliente(String param1) throws Exception;
 
