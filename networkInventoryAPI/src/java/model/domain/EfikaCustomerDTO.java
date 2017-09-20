@@ -7,6 +7,8 @@ package model.domain;
 
 import br.net.gvt.efika.customer.EfikaCustomer;
 import br.net.gvt.efika.customer.InventarioRede;
+import br.net.gvt.efika.customer.OrigemRede;
+import br.net.gvt.efika.customer.TipoRede;
 import javax.xml.bind.annotation.XmlRootElement;
 import model.entity.NetworkInventoryGpon;
 import model.entity.NetworkInventoryMetalico;
@@ -25,6 +27,8 @@ public class EfikaCustomerDTO extends EfikaCustomer {
         this.setDesignadorAcesso(n.getDesignadorAcesso());
 
         InventarioRede r = new InventarioRede();
+        r.setTipo(TipoRede.GPON);
+        r.setOrigem(OrigemRede.OFFLINE);
         r.setIpDslam(n.getIpDslam());
         r.setVendorDslam(n.getVendorDslam());
         r.setModeloDslam(n.getModeloDslam());
@@ -47,6 +51,8 @@ public class EfikaCustomerDTO extends EfikaCustomer {
         this.setDesignador(n.getDesignador());
 
         InventarioRede r = new InventarioRede();
+        r.setTipo(TipoRede.METALICA);
+        r.setOrigem(OrigemRede.OFFLINE);
         r.setIpDslam(n.getIpDslam());
         r.setVendorDslam(n.getVendorDslam());
         r.setModeloDslam(n.getModeloDslam());
