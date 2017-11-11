@@ -62,7 +62,7 @@ public class EfikaCustomerDTO extends EfikaCustomer {
         r.setPorta(n.getPorta());
         r.setSequencial(n.getIdCliente());
         r.setLogica(n.getIdCliente());
-        
+        r.setRin(n.getRin());
         
         r.setVendorDslam(detail.getVendor());
         r.setModeloDslam(detail.getModel());
@@ -71,6 +71,7 @@ public class EfikaCustomerDTO extends EfikaCustomer {
         r.setVlanMulticast(n.getVlanMulticast());
         r.setIdOnt(n.getIdOnt());
         r.setCvLan(n.getcVlan());
+        r.setBhs(Boolean.TRUE);
         
         this.setRede(r);
     }
