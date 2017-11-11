@@ -12,8 +12,8 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import model.domain.CustomerServiceInter;
 import model.domain.FactoryService;
+import model.domain.CustomerService;
 
 /**
  *
@@ -22,7 +22,7 @@ import model.domain.FactoryService;
 @Path("/networkInventory")
 public class ClienteController implements EfikaCustomerRestInter {
 
-    private CustomerServiceInter c;
+    private CustomerService c;
 
     @GET
     @Path("/{instancia}")

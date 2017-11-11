@@ -5,7 +5,9 @@
  */
 package dao;
 
+import javax.persistence.Query;
 import javax.persistence.StoredProcedureQuery;
+import model.entity.NetworkInventoryGpon;
 import model.entity.NetworkInventoryMetalico;
 
 /**
@@ -17,22 +19,20 @@ public class NetworkInventoryMetalicoDAO extends AbstractHibernateDAO implements
         InterfaceDAO<NetworkInventoryMetalico> {
 
     public NetworkInventoryMetalicoDAO() {
-        em = FactoryEntityManager.getInstance().createEntityManager();
     }
 
     @Override
     public NetworkInventoryMetalico consultarCliente(String param1) throws Exception {
-        StoredProcedureQuery query = em.createNamedStoredProcedureQuery("GET_INVENTARIO_METALICO");
-        query.setParameter("instancia", param1);
-        query.execute();
-//        Query query = em.createQuery("FROM NetworkInventoryMetalico i "
-//                + "WHERE "
-//                + "("
-//                + "i.instancia =:param1 "
-//                + "OR i.designador =:param1 "
-//                + ")");
-//        query.setParameter("param1", param1);
-        return (NetworkInventoryMetalico) query.getSingleResult();
+        try {
+            StoredProcedureQuery query = entity().createNamedStoredProcedureQuery("GET_INVENTARIO_METALICO");
+            query.setParameter("instancia", param1);
+            query.execute();
+            return (NetworkInventoryMetalico) query.getSingleResult();
+        } catch (Exception e) {
+            throw e;
+        } finally {
+            this.close();
+        }
     }
 
 }

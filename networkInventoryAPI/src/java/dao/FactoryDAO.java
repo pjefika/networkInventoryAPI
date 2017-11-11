@@ -7,6 +7,7 @@ package dao;
 
 import model.entity.NetworkInventoryGpon;
 import model.entity.NetworkInventoryMetalico;
+import model.entity.NetworkInventorySigresFibra;
 
 /**
  *
@@ -14,12 +15,20 @@ import model.entity.NetworkInventoryMetalico;
  */
 public class FactoryDAO {
 
-    public static EfikaCustomerInterface<NetworkInventoryGpon> createGpon() {
+    public static EfikaCustomerInterface<NetworkInventoryGpon> createGponVivo2() {
         return new NetworkInventoryGponDAO();
     }
 
-    public static EfikaCustomerInterface<NetworkInventoryMetalico> createMetalico() {
+    public static EfikaCustomerInterface<NetworkInventoryMetalico> createMetalicoVivo2() {
         return new NetworkInventoryMetalicoDAO();
+    }
+
+    public static EfikaCustomerInterface<NetworkInventorySigresFibra> createFibraVivo1() {
+        return new NetworkInventorySigresFibraDAO();
+    }
+
+    public static OltDetailSigresFibraDAO createOltDetailSigresFibraDAO() {
+        return new OltDetailSigresFibraDAOImpl();
     }
 
 }

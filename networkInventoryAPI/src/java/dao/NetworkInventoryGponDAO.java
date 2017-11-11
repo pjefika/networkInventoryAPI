@@ -16,20 +16,25 @@ public class NetworkInventoryGponDAO extends AbstractHibernateDAO implements
         EfikaCustomerInterface<NetworkInventoryGpon> {
 
     public NetworkInventoryGponDAO() {
-        em = FactoryEntityManager.getInstance().createEntityManager();
     }
 
     @Override
     public NetworkInventoryGpon consultarCliente(String param1) throws Exception {
-        Query query = em.createQuery("FROM NetworkInventoryGpon i "
-                + "WHERE "
-                + "("
-                + "i.instancia =:param1 "
-                + "OR i.designador =:param1 "
-                + "OR i.designadorAcesso =:param1"
-                + ")");
-        query.setParameter("param1", param1);
-        return (NetworkInventoryGpon) query.getSingleResult();
+        try {
+            Query query = entity().createQuery("FROM NetworkInventoryGpon i "
+                    + "WHERE "
+                    + "("
+                    + "i.instancia =:param1 "
+                    + "OR i.designador =:param1 "
+                    + "OR i.designadorAcesso =:param1"
+                    + ")");
+            query.setParameter("param1", param1);
+            return (NetworkInventoryGpon) query.getSingleResult();
+        } catch (Exception e) {
+            throw e;
+        } finally {
+            this.close();
+        }
     }
 
 }

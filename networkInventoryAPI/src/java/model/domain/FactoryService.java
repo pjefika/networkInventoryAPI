@@ -11,8 +11,8 @@ package model.domain;
  */
 public class FactoryService {
     
-    public static CustomerServiceInter create(){
-        return new ConsultaFacade();
+    public static CustomerService create(){
+        return new CustomerServiceImpl();
     }
     
 }

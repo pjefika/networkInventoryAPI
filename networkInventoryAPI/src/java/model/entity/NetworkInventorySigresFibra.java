@@ -19,52 +19,145 @@ import javax.persistence.Table;
 @Table(name = "SA007_INVENTARIO_REDE_SIGRES_FIBRA", schema = "dw_efika")
 public class NetworkInventorySigresFibra implements Serializable {
 
+    /**
+     * SELECT SLOT, PORTA, FIBRA, RIN, CVLAN, ID_CLIENTE, NRC, ID_ONT, VLAN_M,
+     * VLAN_U, VLAN_A, VREDE_VOIP, REGIAO, SWC, SWD, UNIQUE_ID FROM
+     * dw_efika.SA007_INVENTARIO_REDE_SIGRES_FIBRA LIMIT 100;
+     */
     @Id
-    @Column(name = "INSTANCIA")
-    private String instancia;
-
-    @Column(name = "NRO_TELEFONE15")
+    @Column(name = "ID_FIBRA")
     private String idFibra;
 
-    @Column(name = "NRC")
-    private String nrc;
+    @Column(name = "TERMINAL")
+    private String terminal;
 
-    // Rede
-    @Column(name = "ENDIP_OLT")
-    private String ipDslam;
+    @Column(name = "NOME_OLT")
+    private String nomeOlt;
 
-    @Column(name = "VENDOR_OLT")
-    private String vendorDslam;
-
-    @Column(name = "MODEL_OLT")
-    private String modeloDslam;
-
-    @Column(name = "SLOT_OLT")
+    @Column(name = "SLOT")
     private Integer slot;
 
-    @Column(name = "PORTA_OLT")
+    @Column(name = "PORTA")
     private Integer porta;
-
-    @Column(name = "porta_sequencial")
-    private Integer sequencial;
 
     @Column(name = "RIN")
     private Integer rin;
 
-    @Column(name = "SLID")
+    @Column(name = "CVLAN")
+    private Integer cVlan;
+
+    @Column(name = "ID_ONT")
     private String idOnt;
 
-    @Column(name = "vlan_voip")
+    @Column(name = "ID_CLIENTE")
+    private Integer idCliente;
+
+    @Column(name = "VREDE_VOIP")
     private Integer vlanVoip;
 
-    @Column(name = "vlan_vod")
+    @Column(name = "VLAN_U")
     private Integer vlanVod;
 
-    @Column(name = "vlan_mcast")
+    @Column(name = "VLAN_M")
     private Integer vlanMulticast;
 
     public NetworkInventorySigresFibra() {
     }
 
+    public String getIdFibra() {
+        return idFibra;
+    }
+
+    public void setIdFibra(String idFibra) {
+        this.idFibra = idFibra;
+    }
+
+    public String getTerminal() {
+        return terminal;
+    }
+
+    public void setTerminal(String terminal) {
+        this.terminal = terminal;
+    }
+
+    public String getNomeOlt() {
+        return nomeOlt;
+    }
+
+    public void setNomeOlt(String nomeOlt) {
+        this.nomeOlt = nomeOlt;
+    }
+
+    public Integer getSlot() {
+        return slot;
+    }
+
+    public void setSlot(Integer slot) {
+        this.slot = slot;
+    }
+
+    public Integer getPorta() {
+        return porta;
+    }
+
+    public void setPorta(Integer porta) {
+        this.porta = porta;
+    }
+
+    public Integer getRin() {
+        return rin;
+    }
+
+    public void setRin(Integer rin) {
+        this.rin = rin;
+    }
+
+    public Integer getcVlan() {
+        return cVlan;
+    }
+
+    public void setcVlan(Integer cVlan) {
+        this.cVlan = cVlan;
+    }
+
+    public Integer getIdCliente() {
+        return idCliente;
+    }
+
+    public void setIdCliente(Integer idCliente) {
+        this.idCliente = idCliente;
+    }
+
+    public Integer getVlanVoip() {
+        return vlanVoip;
+    }
+
+    public void setVlanVoip(Integer vlanVoip) {
+        this.vlanVoip = vlanVoip;
+    }
+
+    public Integer getVlanVod() {
+        return vlanVod;
+    }
+
+    public void setVlanVod(Integer vlanVod) {
+        this.vlanVod = vlanVod;
+    }
+
+    public Integer getVlanMulticast() {
+        return vlanMulticast;
+    }
+
+    public void setVlanMulticast(Integer vlanMulticast) {
+        this.vlanMulticast = vlanMulticast;
+    }
+
+    public String getIdOnt() {
+        return idOnt;
+    }
+
+    public void setIdOnt(String idOnt) {
+        this.idOnt = idOnt;
+    }
 
 }
