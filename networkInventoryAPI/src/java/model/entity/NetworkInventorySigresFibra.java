@@ -56,7 +56,7 @@ public class NetworkInventorySigresFibra implements Serializable {
     private Integer vlanVoip;
 
     @Column(name = "VLAN_U")
-    private Integer vlanVod;
+    private Integer vlanUnicast;
 
     @Column(name = "VLAN_M")
     private Integer vlanMulticast;
@@ -136,12 +136,12 @@ public class NetworkInventorySigresFibra implements Serializable {
         this.vlanVoip = vlanVoip;
     }
 
-    public Integer getVlanVod() {
-        return vlanVod;
+    public Integer getVlanUnicast() {
+        return vlanUnicast;
     }
 
-    public void setVlanVod(Integer vlanVod) {
-        this.vlanVod = vlanVod;
+    public void setVlanUnicast(Integer vlanUnicast) {
+        this.vlanUnicast = vlanUnicast;
     }
 
     public Integer getVlanMulticast() {

@@ -67,7 +67,7 @@ public class EfikaCustomerDTO extends EfikaCustomer {
         r.setVendorDslam(detail.getVendor());
         r.setModeloDslam(detail.getModel());
         r.setVlanVoip(n.getVlanVoip());
-        r.setVlanVod(n.getVlanVod());
+        r.setVlanVod(n.getVlanMulticast());
         r.setVlanMulticast(n.getVlanMulticast());
         r.setIdOnt(n.getIdOnt());
         r.setCvLan(n.getcVlan());
