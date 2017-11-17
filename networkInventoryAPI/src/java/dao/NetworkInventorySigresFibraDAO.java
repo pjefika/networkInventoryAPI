@@ -6,8 +6,6 @@
 package dao;
 
 import javax.persistence.Query;
-import javax.persistence.StoredProcedureQuery;
-import model.entity.NetworkInventoryMetalico;
 import model.entity.NetworkInventorySigresFibra;
 
 /**
