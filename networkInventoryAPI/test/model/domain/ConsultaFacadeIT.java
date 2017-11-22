@@ -43,7 +43,7 @@ public class ConsultaFacadeIT {
     @Test
     public void testConsultar() throws Exception {
         String instancia = "4130222839";
-        ConsultaFacade instance = new ConsultaFacade();
+        CustomerServiceImpl instance = new CustomerServiceImpl();
         EfikaCustomerDTO result = instance.consultar(instancia);
         System.out.println("end");
         // TODO review the generated test code and remove the default call to fail.

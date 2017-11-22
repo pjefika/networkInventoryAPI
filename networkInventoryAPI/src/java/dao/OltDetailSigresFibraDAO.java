@@ -3,14 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package model.domain;
+package dao;
+
+import model.entity.OltDetailSigresFibra;
 
 /**
  *
  * @author G0042204
  */
-public interface CustomerServiceInter {
+public interface OltDetailSigresFibraDAO {
 
-    public EfikaCustomerDTO consultar(String instancia) throws Exception;
-
+    public OltDetailSigresFibra consultar(String param1) throws Exception;
 }
