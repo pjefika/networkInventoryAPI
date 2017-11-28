@@ -66,6 +66,9 @@ public class NetworkInventoryGpon implements Serializable {
     @Column(name = "CVLAN")
     private Integer cvLan;
 
+    @Column(name = "SPLITTER_2_NIVEL")
+    private String splSecundario;
+
     public NetworkInventoryGpon() {
     }
 
@@ -187,6 +190,14 @@ public class NetworkInventoryGpon implements Serializable {
 
     public void setCvLan(Integer cvLan) {
         this.cvLan = cvLan;
+    }
+
+    public String getSplSecundario() {
+        return splSecundario;
+    }
+
+    public void setSplSecundario(String splSecundario) {
+        this.splSecundario = splSecundario;
     }
 
 }

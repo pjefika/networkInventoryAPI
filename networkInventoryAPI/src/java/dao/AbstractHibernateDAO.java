@@ -23,6 +23,8 @@ public class AbstractHibernateDAO {
         try {
             em.close();
             emf.close();
+            em = null;
+            emf = null;
         } catch (Exception e) {
             e.printStackTrace();
         }

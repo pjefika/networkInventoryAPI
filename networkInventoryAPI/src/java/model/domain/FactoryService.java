@@ -10,9 +10,13 @@ package model.domain;
  * @author G0042204
  */
 public class FactoryService {
-    
-    public static CustomerService create(){
+
+    public static CustomerService createCustomerService() {
         return new CustomerServiceImpl();
     }
-    
+
+    public static ClientesVizinhosService createClientesVizinhosService() {
+        return new ClientesVizinhosServiceImpl();
+    }
+
 }

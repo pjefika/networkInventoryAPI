@@ -5,36 +5,14 @@
  */
 package dao;
 
-import javax.persistence.Query;
+import java.util.List;
 import model.entity.NetworkInventoryGpon;
 
 /**
  *
  * @author G0042204
  */
-public class NetworkInventoryGponDAO extends AbstractHibernateDAO implements
-        EfikaCustomerInterface<NetworkInventoryGpon> {
+public interface NetworkInventoryGponDAO extends EfikaCustomerInterface<NetworkInventoryGpon> {
 
-    public NetworkInventoryGponDAO() {
-    }
-
-    @Override
-    public NetworkInventoryGpon consultarCliente(String param1) throws Exception {
-        try {
-            Query query = entity().createQuery("FROM NetworkInventoryGpon i "
-                    + "WHERE "
-                    + "("
-                    + "i.instancia =:param1 "
-                    + "OR i.designador =:param1 "
-                    + "OR i.designadorAcesso =:param1"
-                    + ")");
-            query.setParameter("param1", param1);
-            return (NetworkInventoryGpon) query.getSingleResult();
-        } catch (Exception e) {
-            throw e;
-        } finally {
-            this.close();
-        }
-    }
-
+    public List<NetworkInventoryGpon> consultarVizinhos(NetworkInventoryGpon inventory,  Integer qtde) throws Exception;
 }

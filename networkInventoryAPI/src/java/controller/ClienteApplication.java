@@ -21,6 +21,7 @@ public class ClienteApplication extends Application {
 
     public ClienteApplication() {
         singletons.add(new ClienteController());
+        singletons.add(new NetworkInventoryGponController());
     }
 
     public Set<Object> getSingletons() {
