@@ -5,7 +5,6 @@
  */
 package dao;
 
-import model.entity.NetworkInventoryGpon;
 import model.entity.NetworkInventoryMetalico;
 import model.entity.NetworkInventorySigresFibra;
 
@@ -15,8 +14,8 @@ import model.entity.NetworkInventorySigresFibra;
  */
 public class FactoryDAO {
 
-    public static EfikaCustomerInterface<NetworkInventoryGpon> createGponVivo2() {
-        return new NetworkInventoryGponDAO();
+    public static NetworkInventoryGponDAO createGponVivo2() {
+        return new NetworkInventoryGponDAOImpl();
     }
 
     public static EfikaCustomerInterface<NetworkInventoryMetalico> createMetalicoVivo2() {

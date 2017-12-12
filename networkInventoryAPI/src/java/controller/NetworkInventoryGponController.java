@@ -5,34 +5,33 @@
  */
 package controller;
 
+import controller.in.ClientesVizinhosIn;
 import javax.ws.rs.Consumes;
-import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import model.domain.ClientesVizinhosService;
 import model.domain.FactoryService;
-import model.domain.CustomerService;
 
 /**
  *
  * @author G0042204
  */
-@Path("/networkInventory")
-public class ClienteController implements EfikaCustomerRestInter {
+@Path("/networkInventoryGpon")
+public class NetworkInventoryGponController {
 
-    private CustomerService c;
+    private ClientesVizinhosService service;
 
-    @GET
-    @Path("/{instancia}")
+    @POST
+    @Path("/vizinhos")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    @Override
-    public Response getCliente(@PathParam("instancia") String instancia) {
+    public Response vi(ClientesVizinhosIn in) {
         try {
-            c = FactoryService.createCustomerService();
-            return Response.status(200).entity(c.consultar(instancia)).build();
+            service = FactoryService.createClientesVizinhosService();
+            return Response.status(200).entity(service.consultar(in.getEc(), in.getQtde())).build();
         } catch (Exception e) {
             return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity(e).build();
         }
