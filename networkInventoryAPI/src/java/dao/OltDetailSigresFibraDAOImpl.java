@@ -6,7 +6,6 @@
 package dao;
 
 import javax.persistence.Query;
-import model.entity.NetworkInventorySigresFibra;
 import model.entity.OltDetailSigresFibra;
 
 /**

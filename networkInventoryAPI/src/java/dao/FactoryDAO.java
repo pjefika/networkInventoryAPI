@@ -30,4 +30,8 @@ public class FactoryDAO {
         return new OltDetailSigresFibraDAOImpl();
     }
 
+    public static ExternalNetworkSigresDAO createENSigresDAO() {
+        return new ExternalNetworkSigresDAOImpl();
+    }
+
 }
