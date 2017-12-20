@@ -12,7 +12,8 @@ import model.entity.NetworkInventoryGpon;
  *
  * @author G0042204
  */
-public interface NetworkInventoryGponDAO extends EfikaCustomerInterface<NetworkInventoryGpon> {
+public interface NetworkInventoryGponDAO extends EfikaCustomerInterface<NetworkInventoryGpon>, ConsultaVizinhanca<NetworkInventoryGpon> {
 
+    @Override
     public List<NetworkInventoryGpon> consultarVizinhos(NetworkInventoryGpon inventory,  Integer qtde) throws Exception;
 }
