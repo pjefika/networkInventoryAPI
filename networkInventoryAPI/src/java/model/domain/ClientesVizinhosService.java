@@ -6,7 +6,6 @@
 package model.domain;
 
 import br.net.gvt.efika.customer.EfikaCustomer;
-import java.util.List;
 
 /**
  *
@@ -14,6 +13,6 @@ import java.util.List;
  */
 public interface ClientesVizinhosService {
 
-    public List<EfikaCustomerDTO> consultar(EfikaCustomer ec, Integer qtde)  throws Exception;
+    public ClientesVizinhosResponse consultar(EfikaCustomer ec, Integer qtde)  throws Exception;
 
 }

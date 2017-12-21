@@ -22,7 +22,7 @@ public class FactoryDAO {
         return new NetworkInventoryMetalicoDAO();
     }
 
-    public static EfikaCustomerInterface<NetworkInventorySigresFibra> createFibraVivo1() {
+    public static NetworkInventorySigresFibraDAO createFibraVivo1() {
         return new NetworkInventorySigresFibraDAO();
     }
 
@@ -32,6 +32,10 @@ public class FactoryDAO {
 
     public static ExternalNetworkSigresDAO createENSigresDAO() {
         return new ExternalNetworkSigresDAOImpl();
+    }
+
+    public static ConsultaVizinhanca<NetworkInventorySigresFibra> createNetworkInventorySigresFibraDAO() {
+        return new NetworkInventorySigresFibraDAO();
     }
 
 }

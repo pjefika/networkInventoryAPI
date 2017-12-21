@@ -9,18 +9,24 @@ import br.net.gvt.efika.customer.EfikaCustomer;
 import br.net.gvt.efika.customer.OrigemPlanta;
 import dao.FactoryDAO;
 import dao.NetworkInventoryGponDAO;
+import dao.NetworkInventorySigresFibraDAO;
 import java.util.ArrayList;
 import java.util.List;
 import model.entity.NetworkInventoryGpon;
+import model.entity.NetworkInventorySigresFibra;
 
 public class ClientesVizinhosServiceImpl implements ClientesVizinhosService {
 
     private NetworkInventoryGponDAO dao;
 
-    private List<EfikaCustomerDTO> retorno;
+    private NetworkInventorySigresFibraDAO dao2;
+
+    private List<EfikaCustomerDTO> retorno = new ArrayList<>();
+
+    private final ClientesVizinhosResponse resp = new ClientesVizinhosResponse();
 
     @Override
-    public List<EfikaCustomerDTO> consultar(EfikaCustomer ec, Integer qtde) throws Exception {
+    public ClientesVizinhosResponse consultar(EfikaCustomer ec, Integer qtde) throws Exception {
         try {
             if (ec.getRede().getPlanta() == OrigemPlanta.VIVO2) {
                 dao = FactoryDAO.createGponVivo2();
@@ -29,10 +35,22 @@ public class ClientesVizinhosServiceImpl implements ClientesVizinhosService {
                 dao.consultarVizinhos(inventory, qtde).forEach((t) -> {
                     retorno.add(adapter(t));
                 });
-                return retorno;
+                resp.setVizinhos(retorno);
             } else {
-                return null;
+                dao2 = FactoryDAO.createFibraVivo1();
+                NetworkInventorySigresFibra inventory = dao2.consultarCliente(ec.getInstancia());
+
+                dao2.consultarVizinhos(inventory, qtde).forEach((t) -> {
+                    retorno.add(adapter(t));
+                });
+                resp.setVizinhos(retorno);
             }
+
+            if (resp.getVizinhos().size() > 1) {
+                throw new Exception("Falha ao consultar clientes vizinhos.");
+            }
+
+            return resp;
         } catch (Exception e) {
             throw new Exception("Falha ao consultar clientes vizinhos.");
         }
@@ -42,7 +60,7 @@ public class ClientesVizinhosServiceImpl implements ClientesVizinhosService {
         return new EfikaCustomerDTO(inv);
     }
 
-//    protected EfikaCustomerDTO adapter(NetworkInventoryG inv) {
-//        return new EfikaCustomerDTO(inv);
-//    }
+    protected EfikaCustomerDTO adapter(NetworkInventorySigresFibra inv) {
+        return new EfikaCustomerDTO(inv);
+    }
 }

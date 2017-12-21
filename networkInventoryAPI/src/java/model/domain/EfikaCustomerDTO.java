@@ -106,6 +106,52 @@ public class EfikaCustomerDTO extends EfikaCustomer {
 
     }
 
+    public EfikaCustomerDTO(NetworkInventorySigresFibra n) {
+        OltDetailSigresFibra detail = n.getDetailOlt();
+        
+        this.setInstancia(n.getIdFibra());
+        InventarioRede r = new InventarioRede();
+        r.setPlanta(OrigemPlanta.VIVO1);
+        r.setTipo(TipoRede.GPON);
+        r.setOrigem(OrigemRede.OFFLINE);
+        r.setIpDslam(detail.getIpOlt());
+        r.setTerminal(n.getTerminal());
+
+        r.setSlot(n.getSlot());
+        r.setPorta(n.getPorta());
+        r.setSequencial(n.getIdCliente());
+        r.setLogica(n.getIdCliente());
+        r.setRin(n.getRin());
+
+        r.setVendorDslam(detail.getVendor());
+        r.setModeloDslam(detail.getModel());
+        r.setVlanVoip(n.getVlanVoip());
+        if (n.getVlanVoip() == null) {
+            r.setVlanVoip(n.getVlanMulticast() + 3);
+        }
+
+        r.setVlanVod(n.getVlanMulticast());
+        r.setVlanMulticast(n.getVlanMulticast());
+        r.setIdOnt(n.getIdOnt());
+        r.setCvLan(n.getcVlan());
+        r.setBhs(Boolean.TRUE);
+
+        this.setRede(r);
+
+        if (n.getExternal() != null) {
+            InventarioRedeExterna ext = new InventarioRedeExterna();
+            ext.setTipo(TipoRede.GPON);
+            ext.setOrigem(OrigemRede.OFFLINE);
+            ext.setFibra1n(n.getExternal().getFibra1n());
+            ext.setFibra2n(n.getExternal().getFibra2n());
+            ext.setCaboAlim(n.getExternal().getCaboAlim());
+            ext.setSplitter1n(n.getExternal().getSplitter1n());
+            ext.setSplitter2n(n.getExternal().getSplitter2n());
+            this.setRedeExterna(ext);
+        }
+
+    }
+
     public EfikaCustomerDTO(NetworkInventoryMetalico n) {
 
         this.setInstancia(n.getInstancia());

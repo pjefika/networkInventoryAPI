@@ -8,7 +8,10 @@ package model.entity;
 import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /**
@@ -68,6 +71,10 @@ public class ExternalNetworkSigres implements Serializable {
     @Column(name = "N_DISTRIBUTIONHIGHFIBER")
     private String fibra2n;
 
+    @OneToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "TERMINAL", columnDefinition = "TERMINAL")
+    private NetworkInventorySigresFibra sigres;
+
     public ExternalNetworkSigres() {
     }
 
@@ -117,6 +124,14 @@ public class ExternalNetworkSigres implements Serializable {
 
     public void setFibra2n(String fibra2n) {
         this.fibra2n = fibra2n;
+    }
+
+    public NetworkInventorySigresFibra getSigres() {
+        return sigres;
+    }
+
+    public void setSigres(NetworkInventorySigresFibra sigres) {
+        this.sigres = sigres;
     }
 
 }
