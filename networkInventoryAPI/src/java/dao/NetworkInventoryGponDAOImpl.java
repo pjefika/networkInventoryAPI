@@ -45,7 +45,7 @@ public class NetworkInventoryGponDAOImpl extends AbstractHibernateDAO implements
                     + "AND i.ipDslam =:param "
                     + "AND i.splSecundario =:param1 ")
                     .setParameter("param", inv.getIpDslam())
-                    .setParameter("param1", inv.getSplSecundario())
+                    .setParameter("param1", inv.getSplitter2n())
                     .setMaxResults(qtde)
                     .getResultList();
         } catch (Exception e) {

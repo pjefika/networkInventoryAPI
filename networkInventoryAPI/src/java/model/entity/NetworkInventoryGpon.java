@@ -66,8 +66,20 @@ public class NetworkInventoryGpon implements Serializable {
     @Column(name = "CVLAN")
     private Integer cvLan;
 
+    @Column(name = "SPLITTER_1_NIVEL")
+    private String splitter1n;
+
     @Column(name = "SPLITTER_2_NIVEL")
-    private String splSecundario;
+    private String splitter2n;
+
+    @Column(name = "CABO_ALIM")
+    private String caboAlim;
+
+    @Column(name = "FIBRA1N")
+    private String fibra1n;
+
+    @Column(name = "FIBRA2N")
+    private String fibra2n;
 
     public NetworkInventoryGpon() {
     }
@@ -192,12 +204,44 @@ public class NetworkInventoryGpon implements Serializable {
         this.cvLan = cvLan;
     }
 
-    public String getSplSecundario() {
-        return splSecundario;
+    public String getSplitter1n() {
+        return splitter1n;
     }
 
-    public void setSplSecundario(String splSecundario) {
-        this.splSecundario = splSecundario;
+    public void setSplitter1n(String splitter1n) {
+        this.splitter1n = splitter1n;
+    }
+
+    public String getSplitter2n() {
+        return splitter2n;
+    }
+
+    public void setSplitter2n(String splitter2n) {
+        this.splitter2n = splitter2n;
+    }
+
+    public String getCaboAlim() {
+        return caboAlim;
+    }
+
+    public void setCaboAlim(String caboAlim) {
+        this.caboAlim = caboAlim;
+    }
+
+    public String getFibra1n() {
+        return fibra1n;
+    }
+
+    public void setFibra1n(String fibra1n) {
+        this.fibra1n = fibra1n;
+    }
+
+    public String getFibra2n() {
+        return fibra2n;
+    }
+
+    public void setFibra2n(String fibra2n) {
+        this.fibra2n = fibra2n;
     }
 
 }

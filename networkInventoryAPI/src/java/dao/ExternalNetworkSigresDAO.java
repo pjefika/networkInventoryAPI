@@ -3,16 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package model.domain;
+package dao;
 
-import br.net.gvt.efika.customer.EfikaCustomer;
+import model.entity.ExternalNetworkSigres;
 
 /**
  *
  * @author G0042204
  */
-public interface ClientesVizinhosService {
+public interface ExternalNetworkSigresDAO {
 
-    public ClientesVizinhosResponse consultar(EfikaCustomer ec, Integer qtde)  throws Exception;
-
+    public ExternalNetworkSigres consultar(String terminal) throws Exception;
 }

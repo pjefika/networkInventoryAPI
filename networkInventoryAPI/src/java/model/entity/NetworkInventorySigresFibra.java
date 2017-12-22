@@ -8,7 +8,11 @@ package model.entity;
 import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.MapsId;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /**
@@ -60,6 +64,14 @@ public class NetworkInventorySigresFibra implements Serializable {
 
     @Column(name = "VLAN_M")
     private Integer vlanMulticast;
+
+    @OneToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "TERMINAL", unique = true, nullable = false, insertable = false, updatable = false)
+    private ExternalNetworkSigres external;
+
+    @OneToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "NOME_OLT", unique = true, nullable = false, insertable = false, updatable = false)
+    private OltDetailSigresFibra detailOlt;
 
     public NetworkInventorySigresFibra() {
     }
@@ -158,6 +170,22 @@ public class NetworkInventorySigresFibra implements Serializable {
 
     public void setIdOnt(String idOnt) {
         this.idOnt = idOnt;
+    }
+
+    public ExternalNetworkSigres getExternal() {
+        return external;
+    }
+
+    public void setExternal(ExternalNetworkSigres external) {
+        this.external = external;
+    }
+
+    public OltDetailSigresFibra getDetailOlt() {
+        return detailOlt;
+    }
+
+    public void setDetailOlt(OltDetailSigresFibra detailOlt) {
+        this.detailOlt = detailOlt;
     }
 
 }

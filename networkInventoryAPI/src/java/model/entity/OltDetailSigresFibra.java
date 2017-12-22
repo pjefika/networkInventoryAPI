@@ -8,7 +8,9 @@ package model.entity;
 import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /**
@@ -42,6 +44,7 @@ public class OltDetailSigresFibra implements Serializable {
 
     @Column(name = "MODEL_OLT")
     private String model;
+
 
     public OltDetailSigresFibra() {
     }
@@ -93,5 +96,7 @@ public class OltDetailSigresFibra implements Serializable {
     public void setModel(String model) {
         this.model = model;
     }
+
+
 
 }

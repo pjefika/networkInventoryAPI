@@ -3,16 +3,17 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package model.domain;
+package dao;
 
-import br.net.gvt.efika.customer.EfikaCustomer;
+import java.util.List;
 
 /**
  *
  * @author G0042204
+ * @param <T>
  */
-public interface ClientesVizinhosService {
+public interface ConsultaVizinhanca <T>{
 
-    public ClientesVizinhosResponse consultar(EfikaCustomer ec, Integer qtde)  throws Exception;
+    public List<T> consultarVizinhos(T inventory, Integer qtde) throws Exception;
 
 }

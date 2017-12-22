@@ -8,6 +8,7 @@ package dao;
 /**
  *
  * @author G0042204
+ * @param <T>
  */
 public interface EfikaCustomerInterface <T> extends InterfaceDAO<T>{
 

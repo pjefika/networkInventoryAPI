@@ -6,9 +6,11 @@
 package model.domain;
 
 import dao.EfikaCustomerInterface;
+import dao.ExternalNetworkSigresDAO;
 import dao.FactoryDAO;
 import dao.OltDetailSigresFibraDAO;
 import model.domain.exception.CustomerNotFound;
+import model.entity.ExternalNetworkSigres;
 import model.entity.NetworkInventoryGpon;
 import model.entity.NetworkInventoryMetalico;
 import model.entity.NetworkInventorySigresFibra;
@@ -23,6 +25,7 @@ public class CustomerServiceImpl implements CustomerService {
     private EfikaCustomerInterface<NetworkInventoryMetalico> metalico;
     private EfikaCustomerInterface<NetworkInventorySigresFibra> sigresFibra;
     private OltDetailSigresFibraDAO oltDetail;
+    private ExternalNetworkSigresDAO exnDAO;
 
     public CustomerServiceImpl() {
     }
@@ -39,10 +42,10 @@ public class CustomerServiceImpl implements CustomerService {
             } catch (Exception ex) {
                 try {
                     sigresFibra = FactoryDAO.createFibraVivo1();
-                    oltDetail = FactoryDAO.createOltDetailSigresFibraDAO();
                     NetworkInventorySigresFibra sigres = sigresFibra.consultarCliente(instancia);
-                    return new EfikaCustomerDTO(sigres, oltDetail.consultar(sigres.getNomeOlt()));
+                    return new EfikaCustomerDTO(sigres);
                 } catch (Exception ex2) {
+                    ex2.printStackTrace();
                     throw new CustomerNotFound();
                 }
             }

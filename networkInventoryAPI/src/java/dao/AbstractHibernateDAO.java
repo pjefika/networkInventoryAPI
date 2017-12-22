@@ -22,20 +22,30 @@ public class AbstractHibernateDAO {
     public void close() {
         try {
             em.close();
-            emf.close();
-            em = null;
-            emf = null;
         } catch (Exception e) {
-            e.printStackTrace();
+        } finally {
+            em = null;
+        }
+        try {
+            emf.close();
+        } catch (Exception e) {
+        } finally {
+            emf = null;
         }
     }
 
     public EntityManager entity() {
         if (em == null) {
-            emf = Persistence.createEntityManagerFactory("networkInventoryPU");
-            em = emf.createEntityManager();
+            em = getEmf().createEntityManager();
         }
         return em;
+    }
+
+    protected EntityManagerFactory getEmf() {
+        if (emf == null) {
+            emf = Persistence.createEntityManagerFactory("networkInventoryPU");
+        }
+        return emf;
     }
 
 }

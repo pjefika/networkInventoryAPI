@@ -7,9 +7,10 @@
     <class>model.entity.NetworkInventoryMetalico</class>
     <class>model.entity.NetworkInventorySigresFibra</class>
     <class>model.entity.OltDetailSigresFibra</class>
+    <class>model.entity.ExternalNetworkSigres</class>
     <exclude-unlisted-classes>true</exclude-unlisted-classes>
     <properties>
-      <property name="hibernate.show_sql" value="false"/>
+      <property name="hibernate.show_sql" value="true"/>
       <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect"/>
     </properties>
   </persistence-unit>
