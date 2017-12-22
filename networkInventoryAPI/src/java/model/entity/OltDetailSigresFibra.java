@@ -47,7 +47,7 @@ public class OltDetailSigresFibra implements Serializable {
     private String model;
 
     @OneToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "TERMINAL", columnDefinition = "TERMINAL")
+    @JoinColumn(name = "NOME_REDE_OLT", columnDefinition = "NOME_OLT")
     private NetworkInventorySigresFibra sigres;
 
     public OltDetailSigresFibra() {
@@ -101,9 +101,9 @@ public class OltDetailSigresFibra implements Serializable {
         this.model = model;
     }
 
-    public NetworkInventorySigresFibra getSigres() {
-        return sigres;
-    }
+//    public NetworkInventorySigresFibra getSigres() {
+//        return sigres;
+//    }
 
     public void setSigres(NetworkInventorySigresFibra sigres) {
         this.sigres = sigres;
