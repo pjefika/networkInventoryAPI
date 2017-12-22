@@ -47,7 +47,7 @@ public class ClientesVizinhosServiceImpl implements ClientesVizinhosService {
                 resp.setVizinhos(retorno);
             }
 
-            if (resp.getVizinhos().size() > 1) {
+            if (resp.getVizinhos().size() < 2) {
                 throw new Exception("Falha ao consultar clientes vizinhos.");
             }
 
