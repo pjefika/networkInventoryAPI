@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 import model.entity.NetworkInventoryGpon;
 import model.entity.NetworkInventorySigresFibra;
+import util.GsonUtil;
 
 public class ClientesVizinhosServiceImpl implements ClientesVizinhosService {
 
@@ -39,7 +40,7 @@ public class ClientesVizinhosServiceImpl implements ClientesVizinhosService {
             } else {
                 dao2 = FactoryDAO.createFibraVivo1();
                 NetworkInventorySigresFibra inventory = dao2.consultarCliente(ec.getInstancia());
-
+                System.out.println(GsonUtil.serialize(inventory));
                 dao2.consultarVizinhos(inventory, qtde).forEach((t) -> {
                     retorno.add(adapter(t));
                 });
@@ -52,6 +53,7 @@ public class ClientesVizinhosServiceImpl implements ClientesVizinhosService {
 
             return resp;
         } catch (Exception e) {
+            e.printStackTrace();
             throw new Exception("Falha ao consultar clientes vizinhos.");
         }
     }

@@ -42,17 +42,10 @@ public class CustomerServiceImpl implements CustomerService {
             } catch (Exception ex) {
                 try {
                     sigresFibra = FactoryDAO.createFibraVivo1();
-                    oltDetail = FactoryDAO.createOltDetailSigresFibraDAO();
-                    exnDAO = FactoryDAO.createENSigresDAO();
                     NetworkInventorySigresFibra sigres = sigresFibra.consultarCliente(instancia);
-                    ExternalNetworkSigres sagre = null;
-                    try {
-                        sagre = exnDAO.consultar(sigres.getTerminal());
-                    } catch (Exception ex1) {
-                        sagre = null;
-                    }
-                    return new EfikaCustomerDTO(sigres, oltDetail.consultar(sigres.getNomeOlt()), sagre);
+                    return new EfikaCustomerDTO(sigres);
                 } catch (Exception ex2) {
+                    ex2.printStackTrace();
                     throw new CustomerNotFound();
                 }
             }

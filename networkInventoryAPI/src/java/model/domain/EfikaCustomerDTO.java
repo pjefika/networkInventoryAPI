@@ -17,6 +17,7 @@ import model.entity.NetworkInventoryGpon;
 import model.entity.NetworkInventoryMetalico;
 import model.entity.NetworkInventorySigresFibra;
 import model.entity.OltDetailSigresFibra;
+import util.GsonUtil;
 
 /**
  *
@@ -107,6 +108,7 @@ public class EfikaCustomerDTO extends EfikaCustomer {
     }
 
     public EfikaCustomerDTO(NetworkInventorySigresFibra n) {
+        System.out.println(GsonUtil.serialize(n));
         OltDetailSigresFibra detail = n.getDetailOlt();
         
         this.setInstancia(n.getIdFibra());
