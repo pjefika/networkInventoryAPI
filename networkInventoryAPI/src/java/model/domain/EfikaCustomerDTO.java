@@ -8,9 +8,9 @@ package model.domain;
 import br.net.gvt.efika.customer.EfikaCustomer;
 import br.net.gvt.efika.customer.InventarioRede;
 import br.net.gvt.efika.customer.InventarioRedeExterna;
-import br.net.gvt.efika.customer.OrigemPlanta;
-import br.net.gvt.efika.customer.OrigemRede;
 import br.net.gvt.efika.customer.TipoRede;
+import br.net.gvt.efika.enums.OrigemPlanta;
+import br.net.gvt.efika.enums.OrigemRede;
 import javax.xml.bind.annotation.XmlRootElement;
 import model.entity.ExternalNetworkSigres;
 import model.entity.NetworkInventoryGpon;
@@ -47,7 +47,7 @@ public class EfikaCustomerDTO extends EfikaCustomer {
         r.setVlanVoip(n.getVlanVoip());
         r.setVlanVod(n.getVlanVod());
         r.setVlanMulticast(n.getVlanMulticast());
-        r.setCvLan(n.getCvLan());
+        r.setCvlan(n.getCvLan());
 
         this.setRede(r);
 
@@ -88,7 +88,7 @@ public class EfikaCustomerDTO extends EfikaCustomer {
         r.setVlanVod(n.getVlanMulticast());
         r.setVlanMulticast(n.getVlanMulticast());
         r.setIdOnt(n.getIdOnt());
-        r.setCvLan(n.getcVlan());
+        r.setCvlan(n.getcVlan());
         r.setBhs(Boolean.TRUE);
 
         this.setRede(r);
@@ -110,7 +110,7 @@ public class EfikaCustomerDTO extends EfikaCustomer {
     public EfikaCustomerDTO(NetworkInventorySigresFibra n) {
         System.out.println(GsonUtil.serialize(n));
         OltDetailSigresFibra detail = n.getDetailOlt();
-        
+
         this.setInstancia(n.getIdFibra());
         InventarioRede r = new InventarioRede();
         r.setPlanta(OrigemPlanta.VIVO1);
@@ -135,7 +135,7 @@ public class EfikaCustomerDTO extends EfikaCustomer {
         r.setVlanVod(n.getVlanMulticast());
         r.setVlanMulticast(n.getVlanMulticast());
         r.setIdOnt(n.getIdOnt());
-        r.setCvLan(n.getcVlan());
+        r.setCvlan(n.getcVlan());
         r.setBhs(Boolean.TRUE);
 
         this.setRede(r);
@@ -175,7 +175,7 @@ public class EfikaCustomerDTO extends EfikaCustomer {
         r.setVlanMulticast(n.getVlanMulticast());
 
         if (n.getSequencial() != null) {
-            r.setCvLan(n.getSequencial() + 100);
+            r.setCvlan(n.getSequencial() + 100);
         }
 
         this.setRede(r);

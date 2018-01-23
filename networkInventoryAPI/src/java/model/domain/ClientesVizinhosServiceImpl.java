@@ -6,7 +6,7 @@
 package model.domain;
 
 import br.net.gvt.efika.customer.EfikaCustomer;
-import br.net.gvt.efika.customer.OrigemPlanta;
+import br.net.gvt.efika.enums.OrigemPlanta;
 import dao.FactoryDAO;
 import dao.NetworkInventoryGponDAO;
 import dao.NetworkInventorySigresFibraDAO;
