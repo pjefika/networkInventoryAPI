@@ -5,8 +5,12 @@
  */
 package br.net.gvt.efika.networkInventoryAPI;
 
+import org.jboss.shrinkwrap.api.ShrinkWrap;
+import org.jboss.shrinkwrap.api.asset.ClassLoaderAsset;
 import org.wildfly.swarm.Swarm;
 import org.wildfly.swarm.datasources.DatasourcesFraction;
+import org.wildfly.swarm.jaxrs.JAXRSArchive;
+import org.wildfly.swarm.jpa.mysql.MySQLJPAFraction;
 
 /**
  *
@@ -16,36 +20,31 @@ public class Main {
 
     public static void main(String[] args) throws Exception {
         Swarm container = new Swarm();
+
         container.fraction(new DatasourcesFraction()
-                .jdbcDriver("postgresql", (d) -> {
-                    d.driverClassName("org.postgresql.Driver");
-                    d.driverModuleName("org.postgresql");
+                .jdbcDriver("mysql", (d) -> {
+                    d.driverClassName("com.mysql.jdbc.Driver");
+                    d.xaDatasourceClass("com.mysql.jdbc.jdbc2.optional.MysqlXADataSource");
+                    d.driverModuleName("com.mysql");
                 })
-                .dataSource("networkInventoryPU", (ds) -> {
-                    ds.driverName("postgresql");
-                    ds.connectionUrl(System.getenv("JDBC_DATABASE_URL"));
-                    ds.userName(System.getenv("JDBC_DATABASE_USERNAME"));
-                    ds.password(System.getenv("JDBC_DATABASE_PASSWORD"));
+                .dataSource("MySQL", (ds) -> {
+                    ds.jndiName("java:/dw_efika");
+                    ds.driverName("mysql");
+                    ds.connectionUrl("jdbc:mysql://**.**.**.**:****/?autoReconnect=true");
+                    ds.userName("****");
+                    ds.password("****");
                 })
         );
-        
-         container.start();
-//
-//    // Prevent JPA Fraction from installing it's default datasource fraction
-//    container.fraction(new PostgreSQLJPAFraction()
-//        .inhibitDefaultDatasource()
-//        .defaultDatasource("jboss/datasources/MyPU")
-//    );
-//
-//    container.start();
 
-//    JAXRSArchive deployment = ShrinkWrap.create(JAXRSArchive.class);
-//    deployment.addClasses(Employee.class);
-//    deployment.addAsWebInfResource(new ClassLoaderAsset("META-INF/persistence.xml", Main.class.getClassLoader()), "classes/META-INF/persistence.xml");
-//    deployment.addAsWebInfResource(new ClassLoaderAsset("META-INF/load.sql", Main.class.getClassLoader()), "classes/META-INF/load.sql");
-//    deployment.addResource(com.example.EmployeeResource.class);
-//    deployment.addAllDependencies();
-//
-//    container.deploy(deployment);
+        container.fraction(new MySQLJPAFraction()
+                .inhibitDefaultDatasource()
+                .defaultDatasource("jboss/datasources/MySQL")
+        );
+
+        JAXRSArchive deployment = ShrinkWrap.create(JAXRSArchive.class);
+        deployment.addAsWebInfResource(new ClassLoaderAsset("META-INF/persistence.xml", Main.class.getClassLoader()), "classes/META-INF/persistence.xml");
+        deployment.addAllDependencies();
+        container.start().deploy(deployment);
+
     }
 }

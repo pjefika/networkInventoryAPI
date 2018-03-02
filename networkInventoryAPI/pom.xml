@@ -52,7 +52,7 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>2.12.4</version>
                 <configuration>
-                    <!--<skipTests>true</skipTests>-->
+                    <skipTests>true</skipTests>
                 </configuration>
             </plugin>
         </plugins>
@@ -83,6 +83,20 @@
             <artifactId>datasources</artifactId>
         </dependency>
         
+        <!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>5.1.23</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.wildfly.swarm/jpa-mysql -->
+        <dependency>
+            <groupId>org.wildfly.swarm</groupId>
+            <artifactId>jpa-mysql</artifactId>
+            <version>1.0.2.Final</version>
+        </dependency>
+
 
         <dependency>
             <groupId>br.net.gvt.efika</groupId>
