@@ -38,11 +38,11 @@
                             <goal>package</goal>
                         </goals>
                     </execution>
-                    
                 </executions>
                 
                 <configuration>
                     <properties>
+                        <java.net.preferIPv4Stack>true</java.net.preferIPv4Stack>
                         <swarm.http.port>7174</swarm.http.port>
                     </properties>
                 </configuration>
@@ -122,38 +122,19 @@
             <artifactId>util</artifactId>
             <version>1.0.0</version>
         </dependency>
-        
-        <dependency>
-            <groupId>br.com.gvt.www</groupId>
-            <artifactId>workforce</artifactId>
-            <version>1.0.0</version>
-        </dependency>
-        
-        <dependency>
-            <groupId>com.gvt.www.ws.eai.oss</groupId>
-            <artifactId>ossturbonet</artifactId>
-            <version>1.0.0</version>
-        </dependency>
-        
-        <dependency>
-            <groupId>br.com.gvt.www.eai</groupId>
-            <artifactId>numberinventory</artifactId>
-            <version>1.0.0</version>
-        </dependency>
-        
-        
-        <dependency>
-            <groupId>br.com.gvt.oss</groupId>
-            <artifactId>inventory</artifactId>
-            <version>1.0.0</version>
-        </dependency>
-        
+
         
         <!--         https://mvnrepository.com/artifact/org.hibernate/hibernate-core -->
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-core</artifactId>
             <version>5.2.13.Final</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>dom4j</groupId>
+                    <artifactId>dom4j</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
      
         <!-- https://mvnrepository.com/artifact/junit/junit -->
