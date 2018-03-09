@@ -6,7 +6,7 @@
     <packaging>war</packaging>
     
     <properties>
-        <version.wildfly.swarm>2018.2.0</version.wildfly.swarm>
+        <version.wildfly.swarm>2018.1.0</version.wildfly.swarm>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
         <failOnMissingWebXml>false</failOnMissingWebXml>
@@ -124,7 +124,7 @@
         </dependency>
 
         
-        <!--         https://mvnrepository.com/artifact/org.hibernate/hibernate-core -->
+<!--                 https://mvnrepository.com/artifact/org.hibernate/hibernate-core 
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-core</artifactId>
@@ -135,7 +135,7 @@
                     <artifactId>dom4j</artifactId>
                 </exclusion>
             </exclusions>
-        </dependency>
+        </dependency>-->
      
         <!-- https://mvnrepository.com/artifact/junit/junit -->
         <dependency>
