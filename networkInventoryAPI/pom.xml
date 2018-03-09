@@ -89,15 +89,7 @@
             <artifactId>mysql-connector-java</artifactId>
             <version>5.1.23</version>
         </dependency>
-
-        <!-- https://mvnrepository.com/artifact/org.wildfly.swarm/jpa-mysql -->
-        <dependency>
-            <groupId>org.wildfly.swarm</groupId>
-            <artifactId>jpa-mysql</artifactId>
-            <version>1.0.2.Final</version>
-        </dependency>
-
-
+        
         <dependency>
             <groupId>br.net.gvt.efika</groupId>
             <artifactId>efika_customer</artifactId>
@@ -122,20 +114,6 @@
             <artifactId>util</artifactId>
             <version>1.0.0</version>
         </dependency>
-
-        
-<!--                 https://mvnrepository.com/artifact/org.hibernate/hibernate-core 
-        <dependency>
-            <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-core</artifactId>
-            <version>5.2.13.Final</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>dom4j</groupId>
-                    <artifactId>dom4j</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>-->
      
         <!-- https://mvnrepository.com/artifact/junit/junit -->
         <dependency>
