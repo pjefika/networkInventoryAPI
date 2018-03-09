@@ -40,7 +40,7 @@ public class NetworkInventorySigresMetalicoDAOIT {
     public void testConsultar() throws Exception {
         System.out.println("consultar");
         String param1 = "";
-        NetworkInventorySigresMetalicoDAO instance = new NetworkInventorySigresMetalicoDAO();
+        NetworkInventorySigresMetalicoDAOImpl instance = new NetworkInventorySigresMetalicoDAOImpl();
         NetworkInventorySigresMetalico expResult = null;
         NetworkInventorySigresMetalico result = instance.consultar(param1);
         assertEquals(expResult, result);
@@ -57,8 +57,8 @@ public class NetworkInventorySigresMetalicoDAOIT {
         try {
             System.out.println("consultarDslam");
             String nomeDslam = "BR_SPO_IP-ALC_DSL_21_00_01";
-            NetworkInventorySigresMetalicoDAO instance = new NetworkInventorySigresMetalicoDAO();
-            NetworkInventorySigresMetalico result = instance.consultarDslam(nomeDslam);
+            NetworkInventorySigresMetalicoDAOImpl instance = new NetworkInventorySigresMetalicoDAOImpl();
+            NetworkInventorySigresMetalico result = instance.consultarDslamDetail(nomeDslam);
             assertTrue(!result.getNomeDslam().isEmpty());
         } catch (Exception e) {
             fail(e.getMessage());

@@ -10,7 +10,7 @@ package br.net.gvt.efika.networkInventoryAPI.dao;
  * @author G0042204
  * @param <T>
  */
-public interface EfikaCustomerInterface <T> extends InterfaceDAO<T>{
+public interface EfikaCustomerInterface <T>{
 
     public T consultarCliente(String param1) throws Exception;
 

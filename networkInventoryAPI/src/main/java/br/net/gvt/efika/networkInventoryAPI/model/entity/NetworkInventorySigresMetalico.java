@@ -31,6 +31,12 @@ public class NetworkInventorySigresMetalico implements Serializable {
     @Column(name = "NOME_DSLAM")
     private String nomeDslam;
 
+    @Column(name = "MODELO_DSLAM")
+    private String modeloDslam;
+
+    @Column(name = "IP_DSLAM")
+    private String ipDslam;
+
     @Column(name = "NOME_REDE_DSLAM")
     private String nomeRedeDslam;
 
@@ -114,6 +120,22 @@ public class NetworkInventorySigresMetalico implements Serializable {
 
     public void setcVlan(Integer cVlan) {
         this.cVlan = cVlan;
+    }
+
+    public String getModeloDslam() {
+        return modeloDslam;
+    }
+
+    public void setModeloDslam(String modeloDslam) {
+        this.modeloDslam = modeloDslam;
+    }
+
+    public String getIpDslam() {
+        return ipDslam;
+    }
+
+    public void setIpDslam(String ipDslam) {
+        this.ipDslam = ipDslam;
     }
 
 }

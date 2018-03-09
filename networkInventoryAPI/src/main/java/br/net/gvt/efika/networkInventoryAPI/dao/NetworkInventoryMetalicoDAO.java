@@ -13,8 +13,7 @@ import br.net.gvt.efika.networkInventoryAPI.model.entity.NetworkInventoryMetalic
  * @author G0042204
  */
 public class NetworkInventoryMetalicoDAO extends AbstractHibernateDAO implements
-        EfikaCustomerInterface<NetworkInventoryMetalico>,
-        InterfaceDAO<NetworkInventoryMetalico> {
+        EfikaCustomerInterface<NetworkInventoryMetalico> {
 
     public NetworkInventoryMetalicoDAO() {
     }

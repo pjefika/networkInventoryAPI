@@ -40,14 +40,14 @@ public class ConsultaFacadeIT {
     /**
      * Test of consultar method, of class ConsultaFacade.
      */
-    @Test
-    public void testConsultar() throws Exception {
-        String instancia = "4130222839";
-        CustomerServiceImpl instance = new CustomerServiceImpl();
-        EfikaCustomerDTO result = instance.consultar(instancia);
-        System.out.println("end");
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
+//    @Test
+//    public void testConsultar() throws Exception {
+//        String instancia = "4130222839";
+//        CustomerServiceImpl instance = new CustomerServiceImpl();
+//        EfikaCustomerDTO result = instance.consultar(instancia);
+//        System.out.println("end");
+//        // TODO review the generated test code and remove the default call to fail.
+//        fail("The test case is a prototype.");
+//    }
 
 }

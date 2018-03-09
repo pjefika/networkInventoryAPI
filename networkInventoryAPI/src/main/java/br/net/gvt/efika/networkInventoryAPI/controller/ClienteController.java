@@ -5,6 +5,7 @@
  */
 package br.net.gvt.efika.networkInventoryAPI.controller;
 
+import br.net.gvt.efika.customer.model.dto.GenericRequest;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -37,5 +38,7 @@ public class ClienteController implements EfikaCustomerRestInter {
             return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity(e).build();
         }
     }
+
+
 
 }
