@@ -114,6 +114,14 @@
             <artifactId>util</artifactId>
             <version>1.0.0</version>
         </dependency>
+        
+                
+        <dependency>
+            <groupId>br.net.gvt.efika</groupId>
+            <artifactId>network_inventory</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+        
      
         <!-- https://mvnrepository.com/artifact/junit/junit -->
         <dependency>

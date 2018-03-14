@@ -5,8 +5,8 @@
  */
 package br.net.gvt.efika.networkInventoryAPI.controller;
 
-import br.net.gvt.efika.networkInventoryAPI.controller.in.StringParameterRequest;
 import br.net.gvt.efika.networkInventoryAPI.dao.FactoryDAO;
+import br.net.gvt.efika.util.dao.http.request.StringParameterRequest;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;

@@ -10,10 +10,12 @@ import br.net.gvt.efika.efika_customer.model.customer.enums.OrigemPlanta;
 import br.net.gvt.efika.networkInventoryAPI.dao.FactoryDAO;
 import br.net.gvt.efika.networkInventoryAPI.dao.NetworkInventoryGponDAO;
 import br.net.gvt.efika.networkInventoryAPI.dao.NetworkInventorySigresFibraDAO;
+import br.net.gvt.efika.networkInventoryAPI.model.domain.adapter.EfikaCustomerAdapter;
 import java.util.ArrayList;
 import java.util.List;
 import br.net.gvt.efika.networkInventoryAPI.model.entity.NetworkInventoryGpon;
 import br.net.gvt.efika.networkInventoryAPI.model.entity.NetworkInventorySigresFibra;
+import br.net.gvt.efika.network_inventory.model.dto.ClientesVizinhosResponseDTO;
 
 public class ClientesVizinhosServiceImpl implements ClientesVizinhosService {
 
@@ -21,26 +23,26 @@ public class ClientesVizinhosServiceImpl implements ClientesVizinhosService {
 
     private NetworkInventorySigresFibraDAO dao2;
 
-    private List<EfikaCustomerDTO> retorno = new ArrayList<>();
+    private List<EfikaCustomer> retorno = new ArrayList<>();
 
-    private final ClientesVizinhosResponse resp = new ClientesVizinhosResponse();
+    private final ClientesVizinhosResponseDTO resp = new ClientesVizinhosResponseDTO();
 
     @Override
-    public ClientesVizinhosResponse consultar(EfikaCustomer ec, Integer qtde) throws Exception {
+    public ClientesVizinhosResponseDTO consultar(EfikaCustomer ec, Integer qtde) throws Exception {
         try {
             if (ec.getRede().getPlanta() == OrigemPlanta.VIVO2) {
                 dao = FactoryDAO.createGponVivo2();
                 NetworkInventoryGpon inventory = dao.consultarCliente(ec.getDesignadorAcesso());
                 retorno = new ArrayList<>();
                 dao.consultarVizinhos(inventory, qtde).forEach((t) -> {
-                    retorno.add(adapter(t));
+                    retorno.add(EfikaCustomerAdapter.adapter(t));
                 });
                 resp.setVizinhos(retorno);
             } else {
                 dao2 = FactoryDAO.createFibraVivo1();
                 NetworkInventorySigresFibra inventory = dao2.consultarCliente(ec.getInstancia());
                 dao2.consultarVizinhos(inventory, qtde).forEach((t) -> {
-                    retorno.add(adapter(t));
+                    retorno.add(EfikaCustomerAdapter.adapter(t));
                 });
                 resp.setVizinhos(retorno);
             }
@@ -56,11 +58,5 @@ public class ClientesVizinhosServiceImpl implements ClientesVizinhosService {
         }
     }
 
-    protected EfikaCustomerDTO adapter(NetworkInventoryGpon inv) {
-        return new EfikaCustomerDTO(inv);
-    }
-
-    protected EfikaCustomerDTO adapter(NetworkInventorySigresFibra inv) {
-        return new EfikaCustomerDTO(inv);
-    }
+   
 }
