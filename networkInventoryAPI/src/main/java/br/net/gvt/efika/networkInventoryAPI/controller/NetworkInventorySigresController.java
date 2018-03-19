@@ -5,8 +5,8 @@
  */
 package br.net.gvt.efika.networkInventoryAPI.controller;
 
+import br.net.gvt.efika.customer.model.dto.GenericRequest;
 import br.net.gvt.efika.networkInventoryAPI.dao.FactoryDAO;
-import br.net.gvt.efika.util.dao.http.request.StringParameterRequest;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -25,7 +25,7 @@ public class NetworkInventorySigresController {
     @Path("/dslamDetail")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getDslamDetail(StringParameterRequest body) {
+    public Response getDslamDetail(GenericRequest body) {
         try {
             return Response.status(200).entity(FactoryDAO.createNetworkInventorySigresMetalicoDAO().consultarDslamDetail(body.getParameter())).build();
         } catch (Exception e) {
@@ -37,7 +37,7 @@ public class NetworkInventorySigresController {
     @Path("/oltDetail")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getOltDetail(StringParameterRequest body) {
+    public Response getOltDetail(GenericRequest body) {
         try {
             return Response.status(200).entity(FactoryDAO.createOltDetailSigresFibraDAO().consultar(body.getParameter())).build();
         } catch (Exception e) {
