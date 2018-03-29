@@ -5,12 +5,14 @@
  */
 package br.net.gvt.efika.networkInventoryAPI.model.domain;
 
+import br.net.gvt.efika.efika_customer.model.customer.EfikaCustomer;
+
 /**
  *
  * @author G0042204
  */
 public interface CustomerService {
 
-    public EfikaCustomerDTO consultar(String instancia) throws Exception;
+    public EfikaCustomer consultar(String instancia) throws Exception;
 
 }

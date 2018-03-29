@@ -5,10 +5,12 @@
  */
 package br.net.gvt.efika.networkInventoryAPI.model.domain;
 
+import br.net.gvt.efika.efika_customer.model.customer.EfikaCustomer;
 import br.net.gvt.efika.networkInventoryAPI.dao.EfikaCustomerInterface;
 import br.net.gvt.efika.networkInventoryAPI.dao.ExternalNetworkSigresDAO;
 import br.net.gvt.efika.networkInventoryAPI.dao.FactoryDAO;
 import br.net.gvt.efika.networkInventoryAPI.dao.OltDetailSigresFibraDAO;
+import br.net.gvt.efika.networkInventoryAPI.model.domain.adapter.EfikaCustomerAdapter;
 import br.net.gvt.efika.networkInventoryAPI.model.domain.exception.CustomerNotFound;
 import br.net.gvt.efika.networkInventoryAPI.model.entity.ExternalNetworkSigres;
 import br.net.gvt.efika.networkInventoryAPI.model.entity.NetworkInventoryGpon;
@@ -31,19 +33,19 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public EfikaCustomerDTO consultar(String instancia) throws Exception {
+    public EfikaCustomer consultar(String instancia) throws Exception {
         try {
             gpon = FactoryDAO.createGponVivo2();
-            return new EfikaCustomerDTO(gpon.consultarCliente(instancia));
+            return EfikaCustomerAdapter.adapter(gpon.consultarCliente(instancia));
         } catch (Exception e) {
             try {
                 metalico = FactoryDAO.createMetalicoVivo2();
-                return new EfikaCustomerDTO(metalico.consultarCliente(instancia));
+                return EfikaCustomerAdapter.adapter(metalico.consultarCliente(instancia));
             } catch (Exception ex) {
                 try {
                     sigresFibra = FactoryDAO.createFibraVivo1();
                     NetworkInventorySigresFibra sigres = sigresFibra.consultarCliente(instancia);
-                    return new EfikaCustomerDTO(sigres);
+                    return EfikaCustomerAdapter.adapter(sigres);
                 } catch (Exception ex2) {
                     ex2.printStackTrace();
                     throw new CustomerNotFound();

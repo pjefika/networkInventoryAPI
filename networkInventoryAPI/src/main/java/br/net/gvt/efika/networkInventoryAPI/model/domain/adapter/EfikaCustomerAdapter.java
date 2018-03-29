@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.net.gvt.efika.networkInventoryAPI.model.domain;
+package br.net.gvt.efika.networkInventoryAPI.model.domain.adapter;
 
 import br.net.gvt.efika.efika_customer.model.customer.EfikaCustomer;
 import br.net.gvt.efika.efika_customer.model.customer.InventarioRede;
@@ -11,7 +11,6 @@ import br.net.gvt.efika.efika_customer.model.customer.InventarioRedeExterna;
 import br.net.gvt.efika.efika_customer.model.customer.enums.OrigemPlanta;
 import br.net.gvt.efika.efika_customer.model.customer.enums.OrigemRede;
 import br.net.gvt.efika.efika_customer.model.customer.enums.TipoRede;
-import javax.xml.bind.annotation.XmlRootElement;
 import br.net.gvt.efika.networkInventoryAPI.model.entity.ExternalNetworkSigres;
 import br.net.gvt.efika.networkInventoryAPI.model.entity.NetworkInventoryGpon;
 import br.net.gvt.efika.networkInventoryAPI.model.entity.NetworkInventoryMetalico;
@@ -22,14 +21,14 @@ import br.net.gvt.efika.networkInventoryAPI.model.entity.OltDetailSigresFibra;
  *
  * @author G0042204
  */
-@XmlRootElement(name = "cliente")
-public class EfikaCustomerDTO extends EfikaCustomer {
+public class EfikaCustomerAdapter {
 
-    public EfikaCustomerDTO(NetworkInventoryGpon n) {
+    public static EfikaCustomer adapter(NetworkInventoryGpon n) {
 
-        this.setInstancia(n.getInstancia());
-        this.setDesignador(n.getDesignador());
-        this.setDesignadorAcesso(n.getDesignadorAcesso());
+        EfikaCustomer cst = new EfikaCustomer();
+        cst.setInstancia(n.getInstancia());
+        cst.setDesignador(n.getDesignador());
+        cst.setDesignadorAcesso(n.getDesignadorAcesso());
 
         InventarioRede r = new InventarioRede();
         r.setTipo(TipoRede.GPON);
@@ -48,7 +47,7 @@ public class EfikaCustomerDTO extends EfikaCustomer {
         r.setVlanMulticast(n.getVlanMulticast());
         r.setCvlan(n.getCvLan());
 
-        this.setRede(r);
+        cst.setRede(r);
 
         InventarioRedeExterna ext = new InventarioRedeExterna();
         ext.setTipo(TipoRede.GPON);
@@ -58,12 +57,15 @@ public class EfikaCustomerDTO extends EfikaCustomer {
         ext.setCaboAlim(n.getCaboAlim());
         ext.setSplitter1n(n.getSplitter1n());
         ext.setSplitter2n(n.getSplitter2n());
-        this.setRedeExterna(ext);
+        cst.setRedeExterna(ext);
 
+        return cst;
     }
 
-    public EfikaCustomerDTO(NetworkInventorySigresFibra n, OltDetailSigresFibra detail, ExternalNetworkSigres sagre) {
-        this.setInstancia(n.getIdFibra());
+    public static EfikaCustomer adapter(NetworkInventorySigresFibra n, OltDetailSigresFibra detail, ExternalNetworkSigres sagre) {
+        EfikaCustomer cst = new EfikaCustomer();
+
+        cst.setInstancia(n.getIdFibra());
         InventarioRede r = new InventarioRede();
         r.setPlanta(OrigemPlanta.VIVO1);
         r.setTipo(TipoRede.GPON);
@@ -90,7 +92,7 @@ public class EfikaCustomerDTO extends EfikaCustomer {
         r.setCvlan(n.getcVlan());
         r.setBhs(Boolean.TRUE);
 
-        this.setRede(r);
+        cst.setRede(r);
 
         if (sagre != null) {
             InventarioRedeExterna ext = new InventarioRedeExterna();
@@ -101,15 +103,17 @@ public class EfikaCustomerDTO extends EfikaCustomer {
             ext.setCaboAlim(sagre.getCaboAlim());
             ext.setSplitter1n(sagre.getSplitter1n());
             ext.setSplitter2n(sagre.getSplitter2n());
-            this.setRedeExterna(ext);
+            cst.setRedeExterna(ext);
         }
 
+        return cst;
     }
 
-    public EfikaCustomerDTO(NetworkInventorySigresFibra n) {
+    public static EfikaCustomer adapter(NetworkInventorySigresFibra n) {
+        EfikaCustomer cust = new EfikaCustomer();
         OltDetailSigresFibra detail = n.getDetailOlt();
 
-        this.setInstancia(n.getIdFibra());
+        cust.setInstancia(n.getIdFibra());
         InventarioRede r = new InventarioRede();
         r.setPlanta(OrigemPlanta.VIVO1);
         r.setTipo(TipoRede.GPON);
@@ -136,7 +140,7 @@ public class EfikaCustomerDTO extends EfikaCustomer {
         r.setCvlan(n.getcVlan());
         r.setBhs(Boolean.TRUE);
 
-        this.setRede(r);
+        cust.setRede(r);
 
         if (n.getExternal() != null) {
             InventarioRedeExterna ext = new InventarioRedeExterna();
@@ -147,15 +151,18 @@ public class EfikaCustomerDTO extends EfikaCustomer {
             ext.setCaboAlim(n.getExternal().getCaboAlim());
             ext.setSplitter1n(n.getExternal().getSplitter1n());
             ext.setSplitter2n(n.getExternal().getSplitter2n());
-            this.setRedeExterna(ext);
+            cust.setRedeExterna(ext);
         }
+
+        return cust;
 
     }
 
-    public EfikaCustomerDTO(NetworkInventoryMetalico n) {
+    public static EfikaCustomer adapter(NetworkInventoryMetalico n) {
+        EfikaCustomer cust = new EfikaCustomer();
 
-        this.setInstancia(n.getInstancia());
-        this.setDesignador(n.getDesignador());
+        cust.setInstancia(n.getInstancia());
+        cust.setDesignador(n.getDesignador());
 
         InventarioRede r = new InventarioRede();
         r.setTipo(TipoRede.METALICA);
@@ -176,7 +183,9 @@ public class EfikaCustomerDTO extends EfikaCustomer {
             r.setCvlan(n.getSequencial() + 100);
         }
 
-        this.setRede(r);
+        cust.setRede(r);
+
+        return cust;
     }
 
 }

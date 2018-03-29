@@ -21,7 +21,7 @@ import br.net.gvt.efika.networkInventoryAPI.model.domain.CustomerService;
  * @author G0042204
  */
 @Path("/networkInventory")
-public class ClienteController implements EfikaCustomerRestInter {
+public class NetworkInventoryController implements EfikaCustomerRestInter {
 
     private CustomerService c;
 
