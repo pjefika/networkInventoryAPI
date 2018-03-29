@@ -64,8 +64,8 @@ public class NetworkInventorySigresFibra implements Serializable {
     @Column(name = "VLAN_M")
     private Integer vlanMulticast;
 
-    @OneToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "TERMINAL", unique = true, nullable = false, insertable = false, updatable = false)
+//    @OneToOne(fetch = FetchType.EAGER)
+//    @JoinColumn(name = "TERMINAL", unique = true, nullable = false, insertable = false, updatable = false)
     private ExternalNetworkSigres external;
 
     @OneToOne(fetch = FetchType.EAGER)
