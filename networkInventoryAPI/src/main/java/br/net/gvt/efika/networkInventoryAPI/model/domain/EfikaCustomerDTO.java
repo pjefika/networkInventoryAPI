@@ -138,17 +138,17 @@ public class EfikaCustomerDTO extends EfikaCustomer {
 
         this.setRede(r);
 
-        if (n.getExternal() != null) {
-            InventarioRedeExterna ext = new InventarioRedeExterna();
-            ext.setTipo(TipoRede.GPON);
-            ext.setOrigem(OrigemRede.OFFLINE);
-            ext.setFibra1n(n.getExternal().getFibra1n());
-            ext.setFibra2n(n.getExternal().getFibra2n());
-            ext.setCaboAlim(n.getExternal().getCaboAlim());
-            ext.setSplitter1n(n.getExternal().getSplitter1n());
-            ext.setSplitter2n(n.getExternal().getSplitter2n());
-            this.setRedeExterna(ext);
-        }
+//        if (n.getExternal() != null) {
+//            InventarioRedeExterna ext = new InventarioRedeExterna();
+//            ext.setTipo(TipoRede.GPON);
+//            ext.setOrigem(OrigemRede.OFFLINE);
+//            ext.setFibra1n(n.getExternal().getFibra1n());
+//            ext.setFibra2n(n.getExternal().getFibra2n());
+//            ext.setCaboAlim(n.getExternal().getCaboAlim());
+//            ext.setSplitter1n(n.getExternal().getSplitter1n());
+//            ext.setSplitter2n(n.getExternal().getSplitter2n());
+//            this.setRedeExterna(ext);
+//        }
 
     }
 

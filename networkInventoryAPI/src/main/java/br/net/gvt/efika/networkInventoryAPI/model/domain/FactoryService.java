@@ -15,8 +15,8 @@ public class FactoryService {
         return new CustomerServiceImpl();
     }
 
-    public static ClientesVizinhosService createClientesVizinhosService() {
-        return new ClientesVizinhosServiceImpl();
-    }
+//    public static ClientesVizinhosService createClientesVizinhosService() {
+//        return new ClientesVizinhosServiceImpl();
+//    }
 
 }

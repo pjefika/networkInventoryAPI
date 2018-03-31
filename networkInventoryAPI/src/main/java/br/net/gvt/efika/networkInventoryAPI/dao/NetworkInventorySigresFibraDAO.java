@@ -14,7 +14,7 @@ import br.net.gvt.efika.networkInventoryAPI.model.entity.NetworkInventorySigresF
  * @author G0042204
  */
 public class NetworkInventorySigresFibraDAO extends AbstractHibernateDAO implements
-        EfikaCustomerInterface<NetworkInventorySigresFibra>, ConsultaVizinhanca<NetworkInventorySigresFibra> {
+        EfikaCustomerInterface<NetworkInventorySigresFibra> { //, ConsultaVizinhanca<NetworkInventorySigresFibra>
     
     public NetworkInventorySigresFibraDAO() {
     }
@@ -37,25 +37,25 @@ public class NetworkInventorySigresFibraDAO extends AbstractHibernateDAO impleme
         }
     }
     
-    @Override
-    public List<NetworkInventorySigresFibra> consultarVizinhos(NetworkInventorySigresFibra inventory, Integer qtde) throws Exception {
-        try {
-            Query query = entity().createQuery("FROM NetworkInventorySigresFibra i "
-                    + "WHERE "
-                    + "("
-                    + "i.nomeOlt =:param1 "
-                    + "AND i.external.splitter1n =:param2 "
-                    + "AND i.external.splitter2n =:param3 "
-                    + ")");
-            query.setParameter("param1", inventory.getNomeOlt());
-            query.setParameter("param2", inventory.getExternal().getSplitter1n());
-            query.setParameter("param3", inventory.getExternal().getSplitter2n());
-            return (List<NetworkInventorySigresFibra>) query.setMaxResults(qtde).getResultList();
-        } catch (Exception e) {
-            throw e;
-        } finally {
-            this.close();
-        }
-    }
-    
+//    @Override
+//    public List<NetworkInventorySigresFibra> consultarVizinhos(NetworkInventorySigresFibra inventory, Integer qtde) throws Exception {
+//        try {
+//            Query query = entity().createQuery("FROM NetworkInventorySigresFibra i "
+//                    + "WHERE "
+//                    + "("
+//                    + "i.nomeOlt =:param1 "
+//                    + "AND i.external.splitter1n =:param2 "
+//                    + "AND i.external.splitter2n =:param3 "
+//                    + ")");
+//            query.setParameter("param1", inventory.getNomeOlt());
+//            query.setParameter("param2", inventory.getExternal().getSplitter1n());
+//            query.setParameter("param3", inventory.getExternal().getSplitter2n());
+//            return (List<NetworkInventorySigresFibra>) query.setMaxResults(qtde).getResultList();
+//        } catch (Exception e) {
+//            throw e;
+//        } finally {
+//            this.close();
+//        }
+//    }
+//    
 }

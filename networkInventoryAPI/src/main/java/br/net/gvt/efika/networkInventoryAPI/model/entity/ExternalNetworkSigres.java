@@ -15,8 +15,8 @@ import javax.persistence.Table;
  *
  * @author G0042204
  */
-@Entity
-@Table(name = "SA009_INVENTARIO_REDE_EXTERNA_VIVO1", schema = "dw_efika")
+//@Entity
+//@Table(name = "SA009_INVENTARIO_REDE_EXTERNA_VIVO1", schema = "dw_efika")
 public class ExternalNetworkSigres implements Serializable {
 
     /**
@@ -49,23 +49,23 @@ public class ExternalNetworkSigres implements Serializable {
      * `SA009_INVENTARIO_REDE_EXTERNA_VIVO1`.`S_SPLITTERSECONDLEVELLOTFACE` FROM
      * `dw_efika`.`SA009_INVENTARIO_REDE_EXTERNA_VIVO1`; ;
      */
-    @Id
-    @Column(name = "TERMINAL")
+//    @Id
+//    @Column(name = "TERMINAL")
     private String terminal;
 
-    @Column(name = "S_SPLITTERFIRSTLEVELCODE")
+//    @Column(name = "S_SPLITTERFIRSTLEVELCODE")
     private String splitter1n;
 
-    @Column(name = "S_SPLITTERSECONDLEVELCODE")
+//    @Column(name = "S_SPLITTERSECONDLEVELCODE")
     private String splitter2n;
 
-    @Column(name = "S_LATERALCABLEDISTRIBUTION")
+//    @Column(name = "S_LATERALCABLEDISTRIBUTION")
     private String caboAlim;
 
-    @Column(name = "N_DISTRIBUTIONLOWFIBER")
+//    @Column(name = "N_DISTRIBUTIONLOWFIBER")
     private String fibra1n;
 
-    @Column(name = "N_DISTRIBUTIONHIGHFIBER")
+//    @Column(name = "N_DISTRIBUTIONHIGHFIBER")
     private String fibra2n;
 
     public ExternalNetworkSigres() {

@@ -65,8 +65,8 @@ public class NetworkInventorySigresFibra implements Serializable {
     private Integer vlanMulticast;
 
 //    @OneToOne(fetch = FetchType.EAGER)
-//    @JoinColumn(name = "TERMINAL", unique = true, nullable = false, insertable = false, updatable = false)
-    private ExternalNetworkSigres external;
+//    @JoinColumn(name = "TERMINAL", unique = true, nullable = true, insertable = false, updatable = false)
+//    private ExternalNetworkSigres external = null;
 
     @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "NOME_OLT", unique = true, nullable = false, insertable = false, updatable = false)
@@ -171,13 +171,13 @@ public class NetworkInventorySigresFibra implements Serializable {
         this.idOnt = idOnt;
     }
 
-    public ExternalNetworkSigres getExternal() {
-        return external;
-    }
-
-    public void setExternal(ExternalNetworkSigres external) {
-        this.external = external;
-    }
+//    public ExternalNetworkSigres getExternal() {
+//        return external;
+//    }
+//
+//    public void setExternal(ExternalNetworkSigres external) {
+//        this.external = external;
+//    }
 
     public OltDetailSigresFibra getDetailOlt() {
         return detailOlt;

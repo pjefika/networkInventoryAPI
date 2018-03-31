@@ -34,9 +34,9 @@ public class FactoryDAO {
         return new ExternalNetworkSigresDAOImpl();
     }
 
-    public static ConsultaVizinhanca<NetworkInventorySigresFibra> createNetworkInventorySigresFibraDAO() {
-        return new NetworkInventorySigresFibraDAO();
-    }
+//    public static ConsultaVizinhanca<NetworkInventorySigresFibra> createNetworkInventorySigresFibraDAO() {
+//        return new NetworkInventorySigresFibraDAO();
+//    }
     
     
     public static  NetworkInventorySigresMetalicoDAO createNetworkInventorySigresMetalicoDAO() {

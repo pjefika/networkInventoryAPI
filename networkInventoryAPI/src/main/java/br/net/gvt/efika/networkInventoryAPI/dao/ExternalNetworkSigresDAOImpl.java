@@ -19,7 +19,7 @@ public class ExternalNetworkSigresDAOImpl extends AbstractHibernateDAO implement
             query.setParameter("param1", terminal);
             return (ExternalNetworkSigres) query.getSingleResult();
         } catch (Exception e) {
-            throw e;
+            return null;
         } finally {
             this.close();
         }

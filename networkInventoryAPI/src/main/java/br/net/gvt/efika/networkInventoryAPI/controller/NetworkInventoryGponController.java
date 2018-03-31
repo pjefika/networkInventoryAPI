@@ -30,7 +30,7 @@ public class NetworkInventoryGponController {
     @Produces(MediaType.APPLICATION_JSON)
     public Response vi(ClientesVizinhosIn in) {
         try {
-            service = FactoryService.createClientesVizinhosService();
+            service = null;//FactoryService.createClientesVizinhosService();
             return Response.status(200).entity(service.consultar(in.getEc(), in.getQtde())).build();
         } catch (Exception e) {
             return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity(e).build();
