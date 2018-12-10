@@ -68,7 +68,7 @@ public class EfikaCustomerDTO extends EfikaCustomer {
         r.setPlanta(OrigemPlanta.VIVO1);
         r.setTipo(TipoRede.GPON);
         r.setOrigem(OrigemRede.OFFLINE);
-        r.setIpDslam(detail.getIpOlt());
+        r.setIpDslam(detail.getNomeOlt());
         r.setTerminal(n.getTerminal());
 
         r.setSlot(n.getSlot());
@@ -114,7 +114,7 @@ public class EfikaCustomerDTO extends EfikaCustomer {
         r.setPlanta(OrigemPlanta.VIVO1);
         r.setTipo(TipoRede.GPON);
         r.setOrigem(OrigemRede.OFFLINE);
-        r.setIpDslam(detail.getIpOlt());
+        r.setIpDslam(detail.getNomeOlt());
         r.setTerminal(n.getTerminal());
 
         r.setSlot(n.getSlot());

@@ -43,7 +43,7 @@ public class CustomerServiceImplIT {
     @Test
     public void testConsultar() throws Exception {
         System.out.println("consultar");
-        String instancia = "110000088739295";
+        String instancia = "110000090388295";
         CustomerServiceImpl instance = new CustomerServiceImpl();
 //        EfikaCustomerDTO expResult = null;
         EfikaCustomerDTO result = instance.consultar(instancia);

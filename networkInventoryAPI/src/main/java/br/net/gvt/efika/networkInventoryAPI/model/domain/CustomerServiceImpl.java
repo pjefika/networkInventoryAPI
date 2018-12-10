@@ -32,6 +32,7 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public EfikaCustomerDTO consultar(String instancia) throws Exception {
+        System.out.println("CHEGOUINSTANCIA-> " + instancia);
         try {
             gpon = FactoryDAO.createGponVivo2();
             return new EfikaCustomerDTO(gpon.consultarCliente(instancia));

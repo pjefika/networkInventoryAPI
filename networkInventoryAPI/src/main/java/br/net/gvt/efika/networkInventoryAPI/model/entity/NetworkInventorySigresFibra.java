@@ -67,7 +67,6 @@ public class NetworkInventorySigresFibra implements Serializable {
 //    @OneToOne(fetch = FetchType.EAGER)
 //    @JoinColumn(name = "TERMINAL", unique = true, nullable = true, insertable = false, updatable = false)
 //    private ExternalNetworkSigres external = null;
-
     @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "NOME_OLT", unique = true, nullable = false, insertable = false, updatable = false)
     private OltDetailSigresFibra detailOlt;
@@ -178,7 +177,6 @@ public class NetworkInventorySigresFibra implements Serializable {
 //    public void setExternal(ExternalNetworkSigres external) {
 //        this.external = external;
 //    }
-
     public OltDetailSigresFibra getDetailOlt() {
         return detailOlt;
     }
